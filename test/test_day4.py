@@ -1,7 +1,8 @@
 import unittest
 from src.day4 import is_valid, \
     numbers_increase_or_stay_same_from_left_to_right, \
-    count_valid_for_range
+    count_valid_for_range, contains_double_matches, \
+    count_valid_for_range_part_two
 
 # Secure container
 
@@ -29,6 +30,16 @@ class MyTestCase(unittest.TestCase):
 
     def test_solution_for_my_range(self):
         self.assertEqual(1650, count_valid_for_range(178416, 676461))
+
+    def test_solution_for_part_two(self):
+        self.assertEqual(1129, count_valid_for_range_part_two(178416, 676461))
+
+    def test_contains_only_single_set_or_multiple_sets_of_two(self):
+        self.assertEqual(True, contains_double_matches(112233))
+        self.assertEqual(False, contains_double_matches(123444))
+        self.assertEqual(True, contains_double_matches(111122))
+        self.assertEqual(True, contains_double_matches(221111))
+        self.assertEqual(True, contains_double_matches(112211))
 
 
 if __name__ == '__main__':
