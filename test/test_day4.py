@@ -1,15 +1,8 @@
 import unittest
 from src.day4 import is_valid, \
-    numbers_increase_or_stay_same_from_left_to_right
+    numbers_increase_or_stay_same_from_left_to_right, \
+    count_valid_for_range
 
-# -111111 meets criteria (double 11, never decreases)
-# -223450 does not decreasing 5 to 0
-# -123789 no double
-#
-# How many different passwords in range meet this
-#
-# 178416-676461
-#
 # Secure container
 
 
@@ -25,7 +18,18 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(True, numbers_increase_or_stay_same_from_left_to_right(135679))
         self.assertEqual(False, numbers_increase_or_stay_same_from_left_to_right(223450))
 
-# need to test for one of the above that is not decreasing for no duplicate to make sure it checks both
+    def test_checking_for_valid_for_combined(self):
+        self.assertEqual(True, is_valid(111111))
+        self.assertEqual(False, is_valid(223450))
+        self.assertEqual(False, is_valid(123789))
+        self.assertEqual(False, is_valid(135679))
+
+    def test_count_for_range_works(self):
+        self.assertEqual(1, count_valid_for_range(111111, 111112))  # valid is 1000012
+
+    def test_solution_for_my_range(self):
+        self.assertEqual(1650, count_valid_for_range(178416, 676461))
+
 
 if __name__ == '__main__':
     unittest.main()
